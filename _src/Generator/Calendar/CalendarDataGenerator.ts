@@ -40,7 +40,7 @@ export const CalendarDataGenerator = (
     totalHeartRateCount: 100,
   };
 
-  for (let i = 0; i <= Object.keys(days).length; i++) {
+  for (let i = 0; i < Object.keys(days).length; i++) {
     activities.push({
       id: i,
       workout_type: {
@@ -89,7 +89,7 @@ export const CalendarDataGenerator = (
     });
   }
 
-  for (let i = 0; i <= Object.keys(days).length; i++) {
+  for (let i = 0; i < Object.keys(days).length; i++) {
     events.push({
       id: i,
       user: {
@@ -117,7 +117,7 @@ export const CalendarDataGenerator = (
     });
   }
 
-  for (let i = 0; i <= Object.keys(days).length; i++) {
+  for (let i = 0; i < Object.keys(days).length; i++) {
     userMetrics.push({
       id: i,
       metric_type_id: 6,

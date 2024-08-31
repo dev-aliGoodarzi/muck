@@ -29,7 +29,7 @@ const CalendarDataGenerator = (start, end) => {
         },
         totalHeartRateCount: 100,
     };
-    for (let i = 0; i <= Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         activities.push({
             id: i,
             workout_type: {
@@ -77,7 +77,7 @@ const CalendarDataGenerator = (start, end) => {
             comments: i,
         });
     }
-    for (let i = 0; i <= Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         events.push({
             id: i,
             user: {
@@ -104,7 +104,7 @@ const CalendarDataGenerator = (start, end) => {
             race_type_duration: "test Data For race_type_duration",
         });
     }
-    for (let i = 0; i <= Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         userMetrics.push({
             id: i,
             metric_type_id: 6,
