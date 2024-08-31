@@ -1,8 +1,8 @@
 // Express
 import { Router } from "express";
-import { T_Errors } from "../../Interfaces/Common/CommonInterfaces";
-import { checkIsNull } from "../../Utils/checkIsNull";
-import { CalendarDataGenerator } from "../../Generator/Calendar/CalendarDataGenerator";
+import { T_Errors } from "../../../Interfaces/Common/CommonInterfaces";
+import { checkIsNull } from "../../../Utils/checkIsNull";
+import { CalendarDataGenerator } from "../../../Generator/Calendar/CalendarDataGenerator";
 // Express
 
 export const getDataByTimeForCalendar = Router();

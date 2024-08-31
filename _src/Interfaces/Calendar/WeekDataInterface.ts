@@ -1,3 +1,8 @@
+import {
+  T_CalendarSportType,
+  T_SportTypes,
+} from "../../Types/Calendar/CalendarTypes";
+
 export interface CalendarWeekData {
   start: string;
   end: string;
@@ -9,7 +14,7 @@ export interface CalendarWeekData {
 
 export interface Activity {
   id: number;
-  workout_type: WorkoutType;
+  workout_type: T_CalendarSportType<string>;
   title: string;
   workout_day: string;
   total_time: number;
@@ -29,12 +34,6 @@ export interface Activity {
   is_created_by_athlete: boolean;
   structure: Structure[] | null;
   comments: number;
-}
-
-interface WorkoutType {
-  id: number;
-  name: string;
-  icon: string;
 }
 
 interface Structure {

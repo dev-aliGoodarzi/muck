@@ -26,6 +26,8 @@ app.use("*", (_, res) => {
   res.status(200).json({ message: "server is working fine" });
 });
 
+
+
 app.listen(process.env.PORT, () => {
   console.log(`server runs in ${process.env.PORT}`);
 });

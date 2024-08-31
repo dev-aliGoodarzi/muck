@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalendarDataGenerator = void 0;
 // Interfaces
+const constants_1 = require("../../Constants/constants");
+// Interfaces
 // Utils
 const daysDiffrence_1 = require("../../Utils/daysDiffrence");
 const randomNumberGenerator_1 = require("./randomNumberGenerator");
@@ -29,15 +31,11 @@ const CalendarDataGenerator = (start, end) => {
         },
         totalHeartRateCount: 100,
     };
-    for (let i = 0; i < Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length * 2; i++) {
         activities.push({
             id: i,
-            workout_type: {
-                id: (0, randomNumberGenerator_1.randomNumberGenerator)(),
-                name: "Bike",
-                icon: "icon",
-            },
-            title: `test workout ${i}`,
+            workout_type: constants_1.sportTypes.bike,
+            title: `دوچرخه سواری`,
             workout_day: `${days[Object.keys(days)[i]]} 00:00:00`,
             workout_date: `${days[Object.keys(days)[i]]}`,
             total_time: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
@@ -47,7 +45,49 @@ const CalendarDataGenerator = (start, end) => {
             description: `desc ${i}`,
             distance: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
             calories: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            distance_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            distance_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(34, 99),
+            order_on_day: i,
+            is_created_by_athlete: i % 2 === 0,
+            structure: [
+                {
+                    begin: 12,
+                    end: 22,
+                    length: {
+                        unit: "km",
+                        value: 22,
+                    },
+                    steps: [
+                        {
+                            intensityClass: "",
+                            length: {
+                                unit: "km",
+                                value: 22,
+                            },
+                            name: `name ${i}`,
+                            openDuration: i % 2 === 0,
+                            targets: [],
+                            type: "fe",
+                        },
+                    ],
+                    type: "2",
+                },
+            ],
+            comments: i,
+        });
+        activities.push({
+            id: i,
+            workout_type: constants_1.sportTypes.running,
+            title: `دویدن`,
+            workout_day: `${days[Object.keys(days)[i]]} 00:00:00`,
+            workout_date: `${days[Object.keys(days)[i]]}`,
+            total_time: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            tss_actual: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            tss_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            total_time_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            description: `desc ${i}`,
+            distance: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            calories: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+            distance_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(34, 99),
             order_on_day: i,
             is_created_by_athlete: i % 2 === 0,
             structure: [
