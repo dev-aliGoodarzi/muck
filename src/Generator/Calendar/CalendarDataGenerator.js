@@ -31,7 +31,7 @@ const CalendarDataGenerator = (start, end) => {
         },
         totalHeartRateCount: 100,
     };
-    for (let i = 0; i < Object.keys(days).length * 2; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         activities.push({
             id: i,
             workout_type: constants_1.sportTypes.bike,
@@ -73,9 +73,15 @@ const CalendarDataGenerator = (start, end) => {
                 },
             ],
             comments: i,
+            css: {
+                topColor: "#72bb52",
+                mainBgColor: "#edf6e9",
+                mainTextColor: "#4d4d4d",
+                slaveTextColor: "#4d4d4d",
+            },
         });
         activities.push({
-            id: i,
+            id: Object.keys(days).length * 2 + 1,
             workout_type: constants_1.sportTypes.running,
             title: `دویدن`,
             workout_day: `${days[Object.keys(days)[i]]} 00:00:00`,
@@ -115,6 +121,12 @@ const CalendarDataGenerator = (start, end) => {
                 },
             ],
             comments: i,
+            css: {
+                topColor: "#ff8913",
+                mainBgColor: "#fff0e1",
+                mainTextColor: "#4d4d4d",
+                slaveTextColor: "#4d4d4d",
+            },
         });
     }
     for (let i = 0; i < Object.keys(days).length; i++) {

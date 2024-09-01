@@ -34,6 +34,13 @@ export interface Activity {
   is_created_by_athlete: boolean;
   structure: Structure[] | null;
   comments: number;
+
+  css: {
+    topColor: string;
+    mainBgColor: string;
+    mainTextColor: string;
+    slaveTextColor: string;
+  };
 }
 
 interface Structure {
