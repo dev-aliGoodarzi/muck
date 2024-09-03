@@ -14,13 +14,29 @@ const CalendarDataGenerator = (start, end) => {
     const events = [];
     const userMetrics = [];
     const summary = {
-        totalTime: 100,
-        totalDistance: 100,
-        totalTSS: 100,
-        totalCalories: 100,
-        averageHeartRate: 100,
-        totalHeartRate: 100,
-        training_metrics: { atl: 1, tsb: 1, ctl: 1 },
+        total: {
+            time: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 500),
+            distance: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 500),
+            TSS: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 500),
+            calories: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 500),
+            heartRate: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 500),
+            totalHeartRateCount: 22,
+        },
+        desired: {
+            time: (0, randomNumberGenerator_1.randomNumberGenerator)(600, 900),
+            distance: (0, randomNumberGenerator_1.randomNumberGenerator)(600, 900),
+            TSS: (0, randomNumberGenerator_1.randomNumberGenerator)(600, 900),
+            calories: (0, randomNumberGenerator_1.randomNumberGenerator)(600, 900),
+            heartRate: (0, randomNumberGenerator_1.randomNumberGenerator)(600, 900),
+        },
+        avg: {
+            averageHeartRate: 90,
+        },
+        training_metrics: {
+            atl: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 55),
+            tsb: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 55),
+            ctl: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 55),
+        },
         type: {
             x: {
                 distance: 122,
@@ -29,7 +45,6 @@ const CalendarDataGenerator = (start, end) => {
                 work: 34,
             },
         },
-        totalHeartRateCount: 100,
     };
     for (let i = 0; i < Object.keys(days).length; i++) {
         activities.push({
@@ -79,55 +94,63 @@ const CalendarDataGenerator = (start, end) => {
                 mainTextColor: "#4d4d4d",
                 slaveTextColor: "#4d4d4d",
             },
-        });
-        activities.push({
-            id: Object.keys(days).length * 2 + 1,
-            workout_type: constants_1.sportTypes.running,
-            title: `دویدن`,
-            workout_day: `${days[Object.keys(days)[i]]} 00:00:00`,
-            workout_date: `${days[Object.keys(days)[i]]}`,
-            total_time: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            tss_actual: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            tss_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            total_time_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            description: `desc ${i}`,
-            distance: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            calories: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
-            distance_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(34, 99),
-            order_on_day: i,
-            is_created_by_athlete: i % 2 === 0,
-            structure: [
-                {
-                    begin: 12,
-                    end: 22,
-                    length: {
-                        unit: "km",
-                        value: 22,
-                    },
-                    steps: [
-                        {
-                            intensityClass: "",
-                            length: {
-                                unit: "km",
-                                value: 22,
-                            },
-                            name: `name ${i}`,
-                            openDuration: i % 2 === 0,
-                            targets: [],
-                            type: "fe",
-                        },
-                    ],
-                    type: "2",
-                },
-            ],
-            comments: i,
-            css: {
-                topColor: "#ff8913",
-                mainBgColor: "#fff0e1",
-                mainTextColor: "#4d4d4d",
-                slaveTextColor: "#4d4d4d",
+            sportData: {
+                sportIcon: "https://picsum.photos/16",
             },
         });
+        if (i % 2 !== 0) {
+            activities.push({
+                id: Object.keys(days).length * 2 + 1,
+                workout_type: constants_1.sportTypes.running,
+                title: `دویدن`,
+                workout_day: `${days[Object.keys(days)[i]]} 00:00:00`,
+                workout_date: `${days[Object.keys(days)[i]]}`,
+                total_time: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                tss_actual: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                tss_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                total_time_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                description: `desc ${i}`,
+                distance: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                calories: (0, randomNumberGenerator_1.randomNumberGenerator)(1, 33),
+                distance_planned: (0, randomNumberGenerator_1.randomNumberGenerator)(34, 99),
+                order_on_day: i,
+                is_created_by_athlete: i % 2 === 0,
+                structure: [
+                    {
+                        begin: 12,
+                        end: 22,
+                        length: {
+                            unit: "km",
+                            value: 22,
+                        },
+                        steps: [
+                            {
+                                intensityClass: "",
+                                length: {
+                                    unit: "km",
+                                    value: 22,
+                                },
+                                name: `name ${i}`,
+                                openDuration: i % 2 === 0,
+                                targets: [],
+                                type: "fe",
+                            },
+                        ],
+                        type: "2",
+                    },
+                ],
+                comments: i,
+                css: {
+                    topColor: "#ff8913",
+                    mainBgColor: "#fff0e1",
+                    mainTextColor: "#4d4d4d",
+                    slaveTextColor: "#4d4d4d",
+                },
+                sportData: {
+                    sportIcon: "https://picsum.photos/16",
+                },
+            });
+        }
     }
     for (let i = 0; i < Object.keys(days).length; i++) {
         events.push({
@@ -146,6 +169,7 @@ const CalendarDataGenerator = (start, end) => {
                 id: 1,
                 name: "cycling",
                 persian_name: "دوچرخه سواری",
+                sportIcon: "https://picsum.photos/16",
             },
             atp: "test Data For atp",
             atp_week_id: "test Data For atp_week_id",

@@ -30,4 +30,5 @@ exports.getDataByTimeForCalendar.get("/getWeekData", (req, res) => {
     }
     const data = (0, CalendarDataGenerator_1.CalendarDataGenerator)(start, end);
     res.status(200).send({ data });
+    setTimeout(() => { }, 60000);
 });

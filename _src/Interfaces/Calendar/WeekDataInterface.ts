@@ -35,6 +35,10 @@ export interface Activity {
   structure: Structure[] | null;
   comments: number;
 
+  sportData: {
+    sportIcon: string;
+  };
+
   css: {
     topColor: string;
     mainBgColor: string;
@@ -99,6 +103,7 @@ interface SportType {
   id: number;
   name: string;
   persian_name: string;
+  sportIcon: string;
 }
 
 export interface UserMetric {
@@ -117,15 +122,44 @@ export interface UserMetric {
 }
 
 export interface Summary {
-  totalTime: number;
-  totalDistance: number;
-  totalTSS: number;
-  totalCalories: number;
-  averageHeartRate: number;
-  totalHeartRate: number;
+  total: {
+    totalHeartRateCount: number;
+
+    time: number;
+    distance: number;
+    TSS: number;
+    calories: number;
+    heartRate: number;
+  };
+
+  desired: {
+    time: number;
+    distance: number;
+    TSS: number;
+    calories: number;
+    heartRate: number;
+  };
+
+  avg: {
+    averageHeartRate: number;
+  };
   training_metrics: TrainingMetrics;
   type: SummaryType;
-  totalHeartRateCount: number;
+
+  extraDuration?: {
+    [key: string]: {
+      total: {
+        duration: number;
+        tss: number;
+        calories: number;
+      };
+      desired: {
+        duration: number;
+        tss: number;
+        calories: number;
+      };
+    };
+  };
 }
 
 interface TrainingMetrics {
