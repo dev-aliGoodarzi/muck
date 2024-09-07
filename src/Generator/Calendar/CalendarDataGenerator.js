@@ -94,9 +94,6 @@ const CalendarDataGenerator = (start, end) => {
                 mainTextColor: "#4d4d4d",
                 slaveTextColor: "#4d4d4d",
             },
-            sportData: {
-                sportIcon: "https://picsum.photos/16",
-            },
         });
         if (i % 2 !== 0) {
             activities.push({
@@ -146,9 +143,6 @@ const CalendarDataGenerator = (start, end) => {
                     mainTextColor: "#4d4d4d",
                     slaveTextColor: "#4d4d4d",
                 },
-                sportData: {
-                    sportIcon: "https://picsum.photos/16",
-                },
             });
         }
     }
@@ -181,18 +175,16 @@ const CalendarDataGenerator = (start, end) => {
         });
     }
     for (let i = 0; i < Object.keys(days).length; i++) {
-        userMetrics.push({
-            id: i,
-            metric_type_id: 6,
-            metric_type_name: "Blood Pressure",
-            data_type: "text",
-            value: "۱۲/۸",
-            unique_code: "a1e3770f-16ef-4a1b-ad21-c9d852d8c412",
-            date: "2024-07-23 00:00:00",
-            metric_type_items: [`metric_type_items ${i}`],
-            item_count: 0,
-            workout_date: `${days[Object.keys(days)[i]]}`,
-        });
+        userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
+        userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
+        userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
+        if (i % 2 === 0) {
+            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)(i * 9999, String(days[Object.keys(days)[i]])));
+        }
     }
     return { activities, events, userMetrics, summary, start, end };
 };

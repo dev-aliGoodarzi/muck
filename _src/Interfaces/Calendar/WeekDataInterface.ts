@@ -14,7 +14,7 @@ export interface CalendarWeekData {
 
 export interface Activity {
   id: number;
-  workout_type: T_CalendarSportType<string>;
+  workout_type: T_CalendarSportType;
   title: string;
   workout_day: string;
   total_time: number;
@@ -34,10 +34,6 @@ export interface Activity {
   is_created_by_athlete: boolean;
   structure: Structure[] | null;
   comments: number;
-
-  sportData: {
-    sportIcon: string;
-  };
 
   css: {
     topColor: string;
@@ -107,9 +103,10 @@ interface SportType {
 }
 
 export interface UserMetric {
-  id: number;
-  metric_type_id: number;
+  id: number | string;
+  metric_type_id: number | string;
   metric_type_name: string;
+  metricIcon: string;
   data_type: string;
   value: string;
   unique_code: string;
@@ -118,7 +115,7 @@ export interface UserMetric {
   workout_date: string;
   // just send date here // ex : 2021-12-22
   metric_type_items: string[] | null;
-  item_count: number;
+  item_count: number | string;
 }
 
 export interface Summary {
