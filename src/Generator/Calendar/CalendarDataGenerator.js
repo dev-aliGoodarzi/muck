@@ -46,7 +46,7 @@ const CalendarDataGenerator = (start, end) => {
             },
         },
     };
-    for (let i = 0; i < Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length - 1; i++) {
         activities.push({
             id: i,
             workout_type: constants_1.sportTypes.bike,
@@ -86,6 +86,72 @@ const CalendarDataGenerator = (start, end) => {
                     ],
                     type: "2",
                 },
+                {
+                    begin: 12,
+                    end: 22,
+                    length: {
+                        unit: "km",
+                        value: 22,
+                    },
+                    steps: [
+                        {
+                            intensityClass: "",
+                            length: {
+                                unit: "km",
+                                value: 112,
+                            },
+                            name: `name ${i}`,
+                            openDuration: i % 2 === 0,
+                            targets: [],
+                            type: "fe",
+                        },
+                    ],
+                    type: "2",
+                },
+                {
+                    begin: 12,
+                    end: 22,
+                    length: {
+                        unit: "km",
+                        value: 122,
+                    },
+                    steps: [
+                        {
+                            intensityClass: "",
+                            length: {
+                                unit: "km",
+                                value: 68,
+                            },
+                            name: `name ${i}`,
+                            openDuration: i % 2 === 0,
+                            targets: [],
+                            type: "fe",
+                        },
+                    ],
+                    type: "2",
+                },
+                {
+                    begin: 12,
+                    end: 22,
+                    length: {
+                        unit: "km",
+                        value: 422,
+                    },
+                    steps: [
+                        {
+                            intensityClass: "",
+                            length: {
+                                unit: "km",
+                                value: 50,
+                            },
+                            name: `name ${i}`,
+                            openDuration: i % 2 === 0,
+                            targets: [],
+                            type: "fe",
+                        },
+                    ],
+                    type: "2",
+                },
             ],
             comments: i,
             css: {
@@ -93,6 +159,11 @@ const CalendarDataGenerator = (start, end) => {
                 mainBgColor: "#edf6e9",
                 mainTextColor: "#4d4d4d",
                 slaveTextColor: "#4d4d4d",
+            },
+            reaction: {
+                reactionType: 1,
+                reactionNumber: i,
+                reactionIcon: "https://picsum.photos/16",
             },
         });
         if (i % 2 !== 0) {
@@ -125,7 +196,73 @@ const CalendarDataGenerator = (start, end) => {
                                 intensityClass: "",
                                 length: {
                                     unit: "km",
-                                    value: 22,
+                                    value: 242,
+                                },
+                                name: `name ${i}`,
+                                openDuration: i % 2 === 0,
+                                targets: [],
+                                type: "fe",
+                            },
+                        ],
+                        type: "2",
+                    },
+                    {
+                        begin: 12,
+                        end: 22,
+                        length: {
+                            unit: "km",
+                            value: 22,
+                        },
+                        steps: [
+                            {
+                                intensityClass: "",
+                                length: {
+                                    unit: "km",
+                                    value: 55,
+                                },
+                                name: `name ${i}`,
+                                openDuration: i % 2 === 0,
+                                targets: [],
+                                type: "fe",
+                            },
+                        ],
+                        type: "2",
+                    },
+                    {
+                        begin: 12,
+                        end: 22,
+                        length: {
+                            unit: "km",
+                            value: 122,
+                        },
+                        steps: [
+                            {
+                                intensityClass: "",
+                                length: {
+                                    unit: "km",
+                                    value: 68,
+                                },
+                                name: `name ${i}`,
+                                openDuration: i % 2 === 0,
+                                targets: [],
+                                type: "fe",
+                            },
+                        ],
+                        type: "2",
+                    },
+                    {
+                        begin: 12,
+                        end: 22,
+                        length: {
+                            unit: "km",
+                            value: 112,
+                        },
+                        steps: [
+                            {
+                                intensityClass: "",
+                                length: {
+                                    unit: "km",
+                                    value: 50,
                                 },
                                 name: `name ${i}`,
                                 openDuration: i % 2 === 0,
@@ -143,16 +280,21 @@ const CalendarDataGenerator = (start, end) => {
                     mainTextColor: "#4d4d4d",
                     slaveTextColor: "#4d4d4d",
                 },
+                reaction: {
+                    reactionType: 1,
+                    reactionNumber: i,
+                    reactionIcon: "https://picsum.photos/16",
+                },
             });
         }
     }
-    for (let i = 0; i < Object.keys(days).length; i++) {
+    for (let i = 0; i < Object.keys(days).length - 1; i++) {
         events.push({
             id: i,
             user: {
                 id: i,
                 full_name: `test user ${i}`,
-                profile_image: "https://api.vo2.ai/storage/images/1724768172.jpg",
+                profile_image: "https://picsum.photos/16",
                 is_coached: false,
                 is_register_completed: true,
                 is_mobile_verified: true,
@@ -174,16 +316,11 @@ const CalendarDataGenerator = (start, end) => {
             race_type_duration: "test Data For race_type_duration",
         });
     }
-    for (let i = 0; i < Object.keys(days).length; i++) {
-        userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
-        userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
+    for (let i = 0; i < Object.keys(days).length - 1; i++) {
         userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
         if (i % 2 === 0) {
-            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
-            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
-            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
-            userMetrics.push((0, constants_1.metricType)(i * 9888888, String(days[Object.keys(days)[i]])));
-            userMetrics.push((0, constants_1.metricType)(i * 9999, String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)(i + (Object.keys(days).length - 1), String(days[Object.keys(days)[i]])));
+            userMetrics.push((0, constants_1.metricType)((i + (Object.keys(days).length - 1)) * 2, String(days[Object.keys(days)[i]])));
         }
     }
     return { activities, events, userMetrics, summary, start, end };

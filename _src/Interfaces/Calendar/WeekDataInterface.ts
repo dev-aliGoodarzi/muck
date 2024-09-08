@@ -41,6 +41,12 @@ export interface Activity {
     mainTextColor: string;
     slaveTextColor: string;
   };
+
+  reaction: {
+    reactionType: number | string;
+    reactionNumber: number;
+    reactionIcon: string;
+  };
 }
 
 interface Structure {
