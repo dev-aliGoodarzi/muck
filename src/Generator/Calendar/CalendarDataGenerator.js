@@ -46,7 +46,7 @@ const CalendarDataGenerator = (start, end) => {
             },
         },
     };
-    for (let i = 0; i < Object.keys(days).length - 1; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         activities.push({
             id: i,
             workout_type: constants_1.sportTypes.bike,
@@ -288,7 +288,7 @@ const CalendarDataGenerator = (start, end) => {
             });
         }
     }
-    for (let i = 0; i < Object.keys(days).length - 1; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         events.push({
             id: i,
             user: {
@@ -316,7 +316,7 @@ const CalendarDataGenerator = (start, end) => {
             race_type_duration: "test Data For race_type_duration",
         });
     }
-    for (let i = 0; i < Object.keys(days).length - 1; i++) {
+    for (let i = 0; i < Object.keys(days).length; i++) {
         userMetrics.push((0, constants_1.metricType)(i, String(days[Object.keys(days)[i]])));
         if (i % 2 === 0) {
             userMetrics.push((0, constants_1.metricType)(i + (Object.keys(days).length - 1), String(days[Object.keys(days)[i]])));
