@@ -3,12 +3,12 @@ import express from "express";
 // Express
 
 // Utils
-import cors from "cors";
 import dotenv from "dotenv";
 // Utils
 
 // Routes
 import { CalendarRoutes } from "./Routes/Calendar/CalendarRoutes";
+import mongoose from "mongoose";
 // Routes
 
 dotenv.config();
@@ -29,6 +29,15 @@ app.use("/calendar", CalendarRoutes);
 app.use("*", (_, res) => {
   res.status(200).json({ message: "server is working fine" });
 });
+
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING!)
+  .then(() => {
+    console.log("connected to database");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.listen(process.env.PORT, () => {
   console.log(`server runs in ${process.env.PORT}`);
