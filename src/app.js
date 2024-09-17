@@ -19,7 +19,10 @@ const currMode = process.env.NODE_ENV === "production" ? "prod" : "dev";
 let dbStatus = {
     isConnected: false,
     url: currMode === "prod"
-        ? String(process.env.MONGODB_CONNECTION_STRING).split("").splice(0, 10)
+        ? String(process.env.MONGODB_CONNECTION_STRING)
+            .split("")
+            .splice(0, 10)
+            .join("")
         : process.env.MONGODB_CONNECTION_STRING,
     mongoError: "",
 };
