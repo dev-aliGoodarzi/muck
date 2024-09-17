@@ -35,8 +35,11 @@ app.use("/calendar", CalendarRoutes_1.CalendarRoutes);
 app.use("*", (_, res) => {
     res.status(200).json({ message: "server is working fine", dbStatus });
 });
+const mongodbURI = currMode === "dev"
+    ? process.env.MONGODB_CONNECTION_STRING_LOCAL
+    : process.env.MONGODB_CONNECTION_STRING_PROD;
 mongoose_1.default
-    .connect(process.env.MONGODB_CONNECTION_STRING)
+    .connect(mongodbURI)
     .then(() => {
     console.log("connected to database");
     dbStatus.isConnected = true;
