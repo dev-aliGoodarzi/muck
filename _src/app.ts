@@ -17,15 +17,17 @@ const app = express();
 
 const currMode = process.env.NODE_ENV === "production" ? "prod" : "dev";
 
+const mongodbURI =
+  currMode === "dev"
+    ? process.env.MONGODB_CONNECTION_STRING_LOCAL!
+    : process.env.MONGODB_CONNECTION_STRING_PROD!;
+
 let dbStatus = {
   isConnected: false,
   url:
     currMode === "prod"
-      ? String(process.env.MONGODB_CONNECTION_STRING!)
-          .split("")
-          .splice(0, 10)
-          .join("")
-      : process.env.MONGODB_CONNECTION_STRING,
+      ? mongodbURI.split("").splice(0, 10).join("")
+      : mongodbURI,
   mongoError: "",
 };
 
@@ -44,10 +46,6 @@ app.use("*", (_, res) => {
   res.status(200).json({ message: "server is working fine", dbStatus });
 });
 
-const mongodbURI =
-  currMode === "dev"
-    ? process.env.MONGODB_CONNECTION_STRING_LOCAL!
-    : process.env.MONGODB_CONNECTION_STRING_PROD!;
 mongoose
   .connect(mongodbURI)
 
