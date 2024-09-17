@@ -15,6 +15,16 @@ dotenv.config();
 
 const app = express();
 
+const currMode = process.env.NODE_ENV === "production" ? "prod" : "dev";
+
+let dbStatus = {
+  isConnected: false,
+  url:
+    currMode === "prod"
+      ? String(process.env.MONGODB_CONNECTION_STRING!).split("").splice(0, 10)
+      : process.env.MONGODB_CONNECTION_STRING,
+};
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -27,16 +37,18 @@ app.use((req, res, next) => {
 app.use("/calendar", CalendarRoutes);
 
 app.use("*", (_, res) => {
-  res.status(200).json({ message: "server is working fine" });
+  res.status(200).json({ message: "server is working fine", dbStatus });
 });
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING!)
   .then(() => {
     console.log("connected to database");
+    dbStatus.isConnected = true;
   })
   .catch((err) => {
     console.log(err);
+    dbStatus.isConnected = false;
   });
 
 app.listen(process.env.PORT, () => {
