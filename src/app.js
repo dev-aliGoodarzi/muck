@@ -35,17 +35,19 @@ app.use("/calendar", CalendarRoutes_1.CalendarRoutes);
 app.use("*", (_, res) => {
     res.status(200).json({ message: "server is working fine", dbStatus });
 });
-mongoose_1.default
-    .connect(mongodbURI)
-    .then(() => {
-    console.log("connected to database");
-    dbStatus.isConnected = true;
-})
-    .catch((err) => {
-    console.log(err);
-    dbStatus.isConnected = false;
-    dbStatus.mongoError = JSON.stringify(err);
-});
+if (currMode === "prod") {
+    mongoose_1.default
+        .connect(mongodbURI)
+        .then(() => {
+        console.log("connected to database");
+        dbStatus.isConnected = true;
+    })
+        .catch((err) => {
+        console.log(err);
+        dbStatus.isConnected = false;
+        dbStatus.mongoError = JSON.stringify(err);
+    });
+}
 app.listen(process.env.PORT, () => {
     console.log(`server runs in ${process.env.PORT}`);
 });

@@ -46,18 +46,20 @@ app.use("*", (_, res) => {
   res.status(200).json({ message: "server is working fine", dbStatus });
 });
 
-mongoose
-  .connect(mongodbURI)
+if (currMode === "prod") {
+  mongoose
+    .connect(mongodbURI)
 
-  .then(() => {
-    console.log("connected to database");
-    dbStatus.isConnected = true;
-  })
-  .catch((err) => {
-    console.log(err);
-    dbStatus.isConnected = false;
-    dbStatus.mongoError = JSON.stringify(err);
-  });
+    .then(() => {
+      console.log("connected to database");
+      dbStatus.isConnected = true;
+    })
+    .catch((err) => {
+      console.log(err);
+      dbStatus.isConnected = false;
+      dbStatus.mongoError = JSON.stringify(err);
+    });
+}
 
 app.listen(process.env.PORT, () => {
   console.log(`server runs in ${process.env.PORT}`);
