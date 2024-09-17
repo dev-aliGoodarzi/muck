@@ -21,6 +21,7 @@ let dbStatus = {
     url: currMode === "prod"
         ? String(process.env.MONGODB_CONNECTION_STRING).split("").splice(0, 10)
         : process.env.MONGODB_CONNECTION_STRING,
+    mongoError: "",
 };
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -40,6 +41,7 @@ mongoose_1.default
     .catch((err) => {
     console.log(err);
     dbStatus.isConnected = false;
+    dbStatus.mongoError = JSON.stringify(err);
 });
 app.listen(process.env.PORT, () => {
     console.log(`server runs in ${process.env.PORT}`);
